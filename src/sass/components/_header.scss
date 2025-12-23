@@ -1,0 +1,153 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-background-dark;
+  padding: $space-md 0;
+  border-bottom: 1px solid rgba($color-light, 0.1);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    @extend %h2_bold;
+    color: $color-primary;
+    text-transform: none;
+    text-decoration: none;
+    width: 120px;
+  }
+
+  // Desktop Nav
+  &__nav {
+    display: none;
+    align-items: center;
+    gap: $space-lg;
+
+    @media screen and (min-width: $breakpoint-desktop-min) {
+      display: flex;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    list-style: none;
+    gap: $space-lg;
+  }
+
+  &__link {
+    @extend %p_medium_regular;
+    font-weight: 300;
+    color: $color-light;
+    text-transform: uppercase;
+    transition: $transition-base;
+
+    &:hover {
+      color: $color-primary;
+      text-decoration: none;
+    }
+  }
+
+  &__social {
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    
+    svg { @include absoluteSquare(24px); }
+  }
+
+  // Mobile Tools
+  &__mobile-tools {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+
+    @media screen and (min-width: $breakpoint-desktop-min) {
+      display: none;
+    }
+  }
+
+  &__trigger {
+    background: none;
+    border: none;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-family: $font-base;
+    cursor: pointer;
+    @extend %p_medium_regular;
+
+    svg { @include absoluteSquare(24px); }
+  }
+}
+
+// Fullscreen Mobile Menu
+.mobile-menu {
+  display: none; // Zatiaľ skryté
+  position: fixed;
+  inset: 0;
+  background-color: $color-background-dark;
+  z-index: 200;
+  flex-direction: column;
+  padding: $global-horizontal-padding_mobile;
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: $space-xl;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-family: $font-base;
+    @extend %p_medium_regular;
+    cursor: pointer;
+    svg { @include absoluteSquare(20px); }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: $space-md;
+    flex-grow: 1;
+    padding-bottom: $space-xl;
+  }
+
+  &__link {
+    @extend %h1_bold; // Veľké písmo podľa tvojho vizuálu
+    font-weight: 600;
+    color: $color-light;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__footer {
+    padding-bottom: $space-lg;
+  }
+
+  &__logo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $space-sm;
+    border: 1px solid $color-primary;
+    padding: $space-md;
+    color: $color-primary;
+    @extend %p_medium_bold;
+    text-decoration: none;
+    
+    svg { @include absoluteSquare(20px); }
+  }
+}

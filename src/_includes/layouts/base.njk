@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="sk">
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- SEO základ -->
+	<meta name="description" content="{{ subtitle }}">
+	<meta name="robots" content="index,follow">
+	<title>{{ title }}</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+
+	<link rel="preload" href="/fonts/Bulevar-Regular.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="/fonts/BarlowCondensed-Light.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="preload" href="/fonts/BarlowCondensed-Regular.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="preload" href="/fonts/BarlowCondensed-Medium.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="preload" href="/fonts/BarlowCondensed-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+	<link rel="preload" href="/fonts/BarlowCondensed-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:site_name" content="Konferencia ohňa" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{{ title }}" />
+	<meta property="og:description" content="{{ subtitle }}" />
+	<meta property="og:url" content="{{ page.url | url }}" />
+	<meta property="og:image" content="/images/rodney-banner.jpg" />
+	<meta property="og:image:alt" content="{{ title }}" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="{{ title }}" />
+	<meta name="twitter:description" content="{{ subtitle }}" />
+	<meta name="twitter:image" content="/images/rodney-banner.jpg" />
+	<meta name="twitter:image:alt" content="{{ title }}" />
+
+</head>
+<body id="{{ id }}" >
+
+	{% include "header.njk" %}
+	<main>{{ content | safe }}</main>
+	{% include "footer.njk" %}
+
+	<script src="/js/main.js"></script>
+</body>
+</html>
+

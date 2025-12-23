@@ -1,0 +1,67 @@
+{% if registrationLang is defined %}
+  {% set langId = registrationLang %}
+{% else %}
+  {% set langId = id %}
+{% endif %}
+
+{% set texts = {
+  'sk': {
+    'message': 'Používame súbory cookie na zlepšenie fungovania stránky. Pokračovaním súhlasíte s ich použitím.',
+    'accept': 'Rozumiem',
+    'more': 'Viac informácií',
+    'privacy': '/spracovanie-osobnych-udajov/'
+  },
+  'eng': {
+    'message': 'We use cookies to improve site functionality. By continuing you agree to their use.',
+    'accept': 'Accept',
+    'more': 'More info',
+    'privacy': '/spracovanie-osobnych-udajov/'
+  },
+  'hu': {
+    'message': 'A weboldal működésének javítása érdekében sütiket használunk. Folytatással elfogadod a használatukat.',
+    'accept': 'Elfogadom',
+    'more': 'További információ',
+    'privacy': '/spracovanie-osobnych-udajov/'
+  },
+  'ru': {
+    'message': 'Мы используем cookie-файлы для улучшения работы сайта. Продолжая, вы соглашаетесь с их использованием.',
+    'accept': 'Принять',
+    'more': 'Подробнее',
+    'privacy': '/spracovanie-osobnych-udajov/'
+  }
+} %}
+
+{% set t = texts[langId] if texts[langId] is defined else texts['sk'] %}
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">{{ t.message }}</p>
+    <div class="cookie-banner__actions">
+      <button id="cookie-accept" class="button button--sm">{{ t.accept }}</button>
+    </div>
+  </div>
+</div>
+
+{# Small inline script to handle acceptance using localStorage. You can move this to your main JS file. #}
+<script>
+  (function(){
+    try {
+      var key = 'cookieConsent';
+      var banner = document.getElementById('cookie-banner');
+      if(!banner) return;
+
+      function show(){ banner.hidden = false; }
+      function hide(){ banner.hidden = true; }
+
+      var accepted = (localStorage.getItem(key) === 'accepted');
+      if(!accepted) show();
+
+      document.addEventListener('click', function(e){
+        if(e.target && e.target.id === 'cookie-accept'){
+          localStorage.setItem(key, 'accepted');
+          hide();
+        }
+      });
+    } catch(err){ console.warn('Cookie banner error', err); }
+  })();
+</script>

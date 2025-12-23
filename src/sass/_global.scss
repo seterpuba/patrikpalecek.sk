@@ -1,0 +1,151 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+/*-----------------------------------------------------------*/
+/* FONTS                                                     */
+/*-----------------------------------------------------------*/
+
+// Bulevar - Bold 
+@font-face {
+  font-family: 'Bulevar';
+  src: url('/fonts/Bulevar-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Barlow Condensed - Light
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Barlow Condensed - Regular
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Barlow Condensed - Medium
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Barlow Condensed - SemiBold
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Barlow Condensed - Bold
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Ak potrebuješ Italic, pridaj ich rovnakým štýlom:
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/*-----------------------------------------------------------*/
+/* GLOBAL SETTINGS                                           */
+/*-----------------------------------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-base;
+  color: $color-light;
+  @extend %p_medium_regular;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+/*-----------------------------------------------------------*/
+/* TYPOGRAPHY                                                */
+/*-----------------------------------------------------------*/
+
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+
+h1,h2{
+  font-family: $font-heading;
+}
+
+h2,h3,h4,h5,h6{
+  line-height: 1.5em;
+}
+
+
+h1{
+  @extend %h1_bold;
+}
+
+h2{
+  @extend %h2_bold;
+}
+
+h3{
+  @extend %h3_bold;
+}
+
+h4{
+  @extend %h4_bold;
+}
+
+h5{
+  @extend %h5_bold;
+}
+
+h6{
+  @extend %h6_bold;
+}
+
+p{
+
+}
+
+strong{
+  font-weight: 600;
+}

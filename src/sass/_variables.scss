@@ -1,0 +1,52 @@
+/*-----------------------------------------------------------*/
+/* LAYOUTS                                                   */
+/*-----------------------------------------------------------*/
+
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+
+$breakpoint-desktop-min: 1025px;
+$breakpoint-tablet-min: 769px;
+
+$max-width: 1200px;
+$max-width-narrow: 1280px;
+$section-gap: 80px;
+
+$global-horizontal-padding_desktop: 120px;
+$global-horizontal-padding_tablet: 50px;
+$global-horizontal-padding_mobile: 20px;
+
+$global-vertical-padding_desktop: 150px;
+$global-vertical-padding_tablet: 100px;
+$global-vertical-padding_mobile: 80px;
+
+// COLORS
+$color-primary: #EED445;
+$color-secondary: #121934;
+
+$color-background-dark: #080C1B;
+$color-background-light:#081041;
+
+$color-light: #ffffff;
+$color-dark: #000000;
+
+// TYPOGRAPHY
+$font-base: "Barlow Condensed", sans-serif;
+$font-heading: "Bulevar", sans-serif;
+$font-size-base: 16px;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// SPACING
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 32px;
+$space-xl: 64px;
+$space-xxl: 100px;
+
+// BORDER
+$radius-base: 0px;
+
+// TRANSITION
+$transition-base: all 0.3s ease;

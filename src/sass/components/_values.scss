@@ -1,0 +1,93 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.values {
+  padding: $global-vertical-padding_desktop 0;
+  background-color: $color-background-dark;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: $global-vertical-padding_tablet 0;
+  }
+
+  &__title {
+    @extend %h1_bold;
+    margin-bottom: $space-xl;
+    text-align: left;
+  }
+
+  &__grid {
+    display: flex;
+    gap: $space-md;
+    
+    // Scroll efekt pre Tablet aj Mobil
+    @media screen and (max-width: $breakpoint-tablet) {
+      overflow-x: scroll;
+      //scroll-snap-type: x mandatory;
+      padding-bottom: $space-lg;
+      
+      // Roztiahnutie kontajnera po okraje obrazovky
+      margin: 0 calc(#{$global-horizontal-padding_tablet} * -1); 
+      padding-left: $global-horizontal-padding_tablet;
+      padding-right: $global-horizontal-padding_tablet;
+      
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      @media screen and (max-width: $breakpoint-mobile) {
+        margin: 0 calc(#{$global-horizontal-padding_mobile} * -1);
+        padding-left: $global-horizontal-padding_mobile;
+        padding-right: $global-horizontal-padding_mobile;
+      }
+    }
+  }
+
+  &__card {
+    scroll-snap-align: start;
+    background-color: $color-secondary;
+    padding: $space-xl $space-lg;
+
+    // Mobil: karta zaberá 90%, aby ďalšia trčala
+    @media screen and (max-width: $breakpoint-mobile) {
+      flex: 0 0 90%;
+    }
+
+    // Tablet: karta je užšia, aby bolo vidieť viac z ďalšej
+    @media screen and (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet) {
+      flex: 0 0 45%; // Zobrazí takmer dve karty
+    }
+
+    // Desktop: klasický grid vedľa seba
+    @media screen and (min-width: $breakpoint-desktop-min) {
+      flex: 1;
+    }
+  }
+
+  &__icon {
+    color: $color-primary;
+    margin-bottom: $space-lg;
+    
+    img{
+      @include absoluteSquare(72px);
+    }
+  }
+
+  &__name {
+    @extend %h3_bold;
+    font-weight: 600;
+    color: $color-light;
+    margin-bottom: $space-md;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    @extend %p_small_regular;
+    color: $color-light;
+    margin-bottom: $space-md;
+    text-wrap: pretty;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

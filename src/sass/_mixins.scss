@@ -1,0 +1,147 @@
+@use 'variables' as *;
+@use "sass:math";
+
+@mixin absoluteSquare($size){
+  width: $size;
+  height: $size;
+  min-width: $size;
+  min-height: $size;
+  max-width: $size;
+  max-height: $size;
+}
+
+@mixin backgroundIcon($src){
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url($src);
+}
+
+@mixin font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.3em, $letterSpacing: null, $important: null) {
+  font-size: $fontSize#{$important};
+
+  @if $fontWeight != null {
+    font-weight: $fontWeight#{$important};
+  }
+
+  @if math.unit($lineHeight) == 'px' {
+    line-height: (math.div($lineHeight, $fontSize) * 1em)#{$important};
+  } @else {
+    line-height: $lineHeight#{$important};
+  }
+
+  @if $letterSpacing != null {
+    letter-spacing: $letterSpacing#{$important};
+  }
+}
+
+/*-----------------------------------------------------------*/
+/* TYPOGRAPHY                                                */
+/*-----------------------------------------------------------*/
+
+%h1 {
+	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h1_bold {
+	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h2 {
+	@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h2_bold {
+	@include font($fontSize: 32px, $fontWeight: bold, $lineHeight: 1.3em);
+}
+
+%h3 {
+	@include font($fontSize: 40px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h3_bold {
+	@include font($fontSize: 40px, $fontWeight: bold, $lineHeight: 1.3em);
+}
+
+%h4 {
+	@include font($fontSize: 20px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h4_bold {
+	@include font($fontSize: 20px, $fontWeight: bold, $lineHeight: 1.3em);
+}
+
+%h5 {
+	@include font($fontSize: 18px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h5_bold {
+	@include font($fontSize: 18px, $fontWeight: bold, $lineHeight: 1.3em);
+}
+
+%h6 {
+	@include font($fontSize: 16px, $fontWeight: normal, $lineHeight: 1.3em);
+}
+
+%h6_bold {
+	@include font($fontSize: 16px, $fontWeight: bold, $lineHeight: 1.3em);
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+
+	%h1 {
+		@include font($fontSize: 56px, $fontWeight: normal, $lineHeight: 1.3em);
+	}
+
+	%h1_bold {
+		@include font($fontSize: 56px, $fontWeight: bold, $lineHeight: 1.3em);
+	}
+
+	%h2 {
+		@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.3em);
+	}
+
+	%h2_bold {
+		@include font($fontSize: 32px, $fontWeight: bold, $lineHeight: 1.3em);
+	}
+
+}
+
+
+%p_xLarge_bold{
+	@include font($fontSize: 36px, $fontWeight: 600, $lineHeight: 1.3em);
+}
+
+%p_xLarge_regular {
+	@include font($fontSize: 36px, $fontWeight: 300, $lineHeight: 1.3em);
+}
+
+%p_large_bold {
+	@include font($fontSize: 32px, $fontWeight: 600, $lineHeight: 1.3em);
+}%p_large_regular {
+	@include font($fontSize: 32px, $fontWeight: 300, $lineHeight: 1.3em);
+}
+
+%p_medium_bold {
+	@include font($fontSize: 24px, $fontWeight: 600, $lineHeight: 1.3em);
+}%p_medium_regular {
+	@include font($fontSize: 24px, $fontWeight: 300, $lineHeight: 1.3em);
+}
+
+%p_small_bold {
+	@include font($fontSize: 18px, $fontWeight: 600, $lineHeight: 1.3em);
+}%p_small_regular {
+	@include font($fontSize: 18px, $fontWeight: 300, $lineHeight: 1.3em);
+}
+
+%p_xSmall_bold {
+	@include font($fontSize: 16px, $fontWeight: 600, $lineHeight: 1.3em);
+}%p_xSmall_regular {
+	@include font($fontSize: 16px, $fontWeight: 300, $lineHeight: 10px);
+}
+
+%p_xxSmall_bold {
+	@include font($fontSize: 14px, $fontWeight: 600, $lineHeight: 1.3em);
+}%p_xxSmall_regular {
+	@include font($fontSize: 14px, $fontWeight: 300, $lineHeight: 10px);
+}

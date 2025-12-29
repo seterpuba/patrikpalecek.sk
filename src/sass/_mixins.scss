@@ -48,19 +48,19 @@
 }
 
 %h2 {
-	@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.1em);
+	@include font($fontSize: 75px, $fontWeight: normal, $lineHeight: 1.1em);
 }
 
 %h2_bold {
-	@include font($fontSize: 32px, $fontWeight: 500, $lineHeight: 1.1em);
+	@include font($fontSize: 75px, $fontWeight: 500, $lineHeight: 1.1em);
 }
 
 %h3 {
-	@include font($fontSize: 40px, $fontWeight: normal, $lineHeight: 1.3em);
+	@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.3em);
 }
 
 %h3_bold {
-	@include font($fontSize: 40px, $fontWeight: 500, $lineHeight: 1.3em);
+	@include font($fontSize: 32px, $fontWeight: 500, $lineHeight: 1.3em);
 }
 
 %h4 {
@@ -144,4 +144,12 @@
 	@include font($fontSize: 14px, $fontWeight: 600, $lineHeight: 1.3em);
 }%p_xxSmall_regular {
 	@include font($fontSize: 14px, $fontWeight: 300, $lineHeight: 10px);
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+	%p_medium_bold {
+		@include font($fontSize: 22px, $fontWeight: 600, $lineHeight: 1.3em);
+	}%p_medium_regular {
+		@include font($fontSize: 22px, $fontWeight: 300, $lineHeight: 1.3em);
+	}
 }

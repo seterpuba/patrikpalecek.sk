@@ -1,0 +1,271 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  max-height: 1080px;
+  background-color: $color-background-dark;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 150px;
+
+  background-image: url('/images/background/background-hero.jpg');
+  background-size: cover;
+  background-position: center;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 600px) {
+    min-height: 80vh;
+  }
+
+  // VRSTVA 1: Meno úplne vzadu
+  &__bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    padding-top: 80px; // Rovnaký padding ako hero
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding-top: 50px;
+    }
+  }
+
+  // VRSTVA 2: Obrázok
+  &__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-image: url('/images/patrik-hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      background-size: 150%;
+      background-position: center bottom;
+    }
+
+    @media screen and (max-width: 850px) {
+      background-size: 160%;
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      background-size: 130%;
+      background-position: center calc(100% - 80px);
+    }
+
+    @media screen and (max-width: 600px) {
+      background-size: 135%;
+    }
+
+    @media screen and (max-width: 550px) {
+      background-size: 150%;
+    }
+
+    @media screen and (max-width: 500px) {
+      background-size: 160%;
+    }
+
+    @media screen and (max-width: 450px) {
+      background-size: 185%;
+    }
+
+    @media screen and (max-width: 400px) {
+      background-size: 195%;
+    }
+
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%; 
+      background: linear-gradient(to bottom, transparent, $color-background-dark);
+      pointer-events: none;
+      @media screen and (max-width: $breakpoint-mobile) {
+        height: 45%;
+        background: linear-gradient(
+          to bottom, 
+          transparent 0%, 
+          $color-background-dark calc(100% - 100px), 
+          $color-background-dark 100%
+        );
+      }
+    }
+  }
+
+  // VRSTVA 3: Kontajner vpredu
+  &__container {
+    position: relative;
+    z-index: 3;
+    height: calc(100vh - 160px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    @media screen and (max-width: $breakpoint-tablet) {
+        height: auto;
+        min-height: calc(100vh - 100px);
+    }
+  }
+
+  // Spoločné štýly pre title
+  &__title {
+    font-family: $font-heading;
+    font-weight: 400;
+    font-size: clamp(80px, 16vw, 240px);
+    line-height: 0.85;
+    color: $color-light;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+
+    &-first {
+      transform: translateY(-150px);
+      text-align: left;
+      @media screen and (max-width: $breakpoint-tablet) {
+        transform: translateY(-100px);
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        transform: translateY(-20px);
+      }
+    }
+    &-last { text-align: right; }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: clamp(60px, 18vw, 180px);
+      margin: $space-xxl 0;
+    }
+  }
+
+  &__top-list {
+    display: flex;
+    justify-content: flex-end;
+    @media screen and (min-height: 1080px) {
+      padding-top: 50px;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding-top: 50px;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding-top: 50px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__points {
+    list-style: none;
+    li {
+      position: relative;
+      margin-bottom: $space-sm;
+      display: flex;
+      align-items: flex-start;
+      gap: $space-md;
+      @extend %p_medium_regular;
+      &::before {
+        content: '';
+        flex-shrink: 0;
+        position: relative;
+        top: 10px;
+        @include absoluteSquare(14px);
+        @include backgroundIcon('/images/icons/arrow-vector.svg');
+        display: block;
+      }
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: $breakpoint-mobile) {
+      min-height: 430px;
+    }
+    @media screen and (max-width: 420px) {
+      min-height: 380px;
+    }
+    @media screen and (max-width: 370px) {
+      min-height: 330px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: $space-xl;
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding-bottom: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-xl;
+    }
+  }
+
+  &__experience {
+    max-width: 600px;
+    
+    &-label {
+      @extend %p_large_bold;
+      color: $color-light;
+      display: flex;
+      align-items: center;
+      gap: $space-md;
+      margin-bottom: $space-xs;
+      &::before {
+        content: '';
+        flex-shrink: 0;
+        @include absoluteSquare(24px);
+        @include backgroundIcon('/images/icons/arrow-vector.svg');
+        display: block;
+      }
+    }
+    &-text {
+      @extend %p_medium_regular;
+      color: rgba($color-light, 0.7);
+      padding-left: 40px;
+      @media screen and (max-width: $breakpoint-tablet) {
+        max-width: 90%;
+      }
+    }
+  }
+
+  &__scroll {
+    display: flex;
+    justify-content: center;
+    img {
+      @include absoluteSquare(32px);
+      color: $color-light;
+      opacity: 0.5;
+      animation: heroScroll 2s infinite;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      position: absolute;
+      right: 0;
+      bottom: 30px;
+    }
+  }
+}
+
+@keyframes heroScroll {
+  0% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(10px); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 0.3; }
+}

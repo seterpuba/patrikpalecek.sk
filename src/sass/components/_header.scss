@@ -2,12 +2,26 @@
 @use '../mixins' as *;
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
-  background-color: $color-background-dark;
+  background-color: rgba($color-background-dark, 0);
+  backdrop-filter: blur(0px);
   padding: $space-md 0;
-  border-bottom: 1px solid rgba($color-light, 0.1);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: $transition-base;
+
+  &.sticky{
+    background-color: rgba($color-background-dark, .9);
+    backdrop-filter: blur(20px);
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: 80px;
+  }
 
   &__inner {
     display: flex;
@@ -20,7 +34,10 @@
     color: $color-primary;
     text-transform: none;
     text-decoration: none;
+    display: flex;
+    align-items: center;
     width: 120px;
+    height: fit-content;
   }
 
   // Desktop Nav
@@ -41,7 +58,8 @@
   }
 
   &__link {
-    @extend %p_medium_regular;
+    @extend %p_small_regular;
+    font-size: 20px;
     font-weight: 300;
     color: $color-light;
     text-transform: uppercase;

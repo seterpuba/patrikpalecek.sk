@@ -3,8 +3,7 @@
 
 .about {
   padding: $global-vertical-padding_desktop 0;
-  background: radial-gradient(circle at 80% 20%, rgba($color-primary, 0.15) 0%, transparent 50%),
-              $color-background-dark;
+  background-color: $color-background-dark; // Základná farba pre celú sekciu
   position: relative;
   overflow: hidden;
 
@@ -12,12 +11,47 @@
     padding: $global-vertical-padding_tablet 0;
   }
 
+  &__content{
+    position: relative;
+    z-index: 2;
+  }
+
+  // NOVÝ ŠTÝL: Iba horná časť má obrázok na pozadí
+  &__hero-wrapper {
+
+    background-image: url('/images/background/background-about.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: -$global-vertical-padding_desktop; // Vyrovnanie paddingu sekcie
+    padding: $global-vertical-padding_desktop 0;
+    margin-bottom: $space-xxl;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35%; 
+      background: linear-gradient(to bottom, transparent, $color-background-dark);
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      margin-top: -$global-vertical-padding_tablet;
+      padding: $global-vertical-padding_tablet 0;
+      margin-bottom: $space-xl;
+    }
+  }
+
   &__hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: $space-xl;
     align-items: start;
-    margin-bottom: $space-xxl;
+    // margin-bottom: $space-xxl; // Odstránené, rieši to wrapper
 
     @media screen and (max-width: $breakpoint-tablet) {
       grid-template-columns: 1fr;
@@ -25,15 +59,12 @@
     }
   }
 
+  // ... Zvyšok tvojho kódu (image-main, title, list, footer, atď.) zostáva rovnaký
   &__image-main {
-
     &--desktop {
       display: block;
-      @media screen and (max-width: $breakpoint-tablet) {
-        display: none;
-      }
+      @media screen and (max-width: $breakpoint-tablet) { display: none; }
     }
-
     &--mobile {
       display: none;
       @media screen and (max-width: $breakpoint-tablet) {
@@ -41,7 +72,6 @@
         margin-top: $space-xl;
       }
     }
-
     img {
       width: 100%;
       height: auto;
@@ -49,10 +79,7 @@
       position: relative;
       transform: rotate(-1.5deg);
       transition: transform 0.5s ease;
-
-      &:hover {
-        transform: rotate(0deg);
-      }
+      &:hover { transform: rotate(0deg); }
     }
   }
 
@@ -64,7 +91,6 @@
   &__description {
     @extend %p_medium_regular;
     color: rgba($color-light, 0.8);
-
     p { margin-bottom: $space-md; }
     strong { color: $color-light; font-weight: 700; }
   }
@@ -77,7 +103,6 @@
   &__list {
     list-style: none;
     margin-top: $space-md;
-
     li {
       position: relative;
       margin-bottom: $space-sm;
@@ -85,7 +110,6 @@
       align-items: flex-start;
       gap: $space-md;
       @extend %p_medium_regular;
-
       &::before {
         position: relative;
         top: 10px;
@@ -102,11 +126,10 @@
     grid-template-columns: 1.2fr 0.8fr;
     gap: $space-xl;
     align-items: center;
-
     @media screen and (max-width: $breakpoint-tablet) {
       grid-template-columns: 1fr;
       display: flex;
-      flex-direction: column-reverse; // Na mobile ide obrázok nad text v tejto sekcii
+      flex-direction: column-reverse;
       gap: $space-xl;
     }
   }
@@ -120,19 +143,10 @@
 
   &__image-tilt {
     position: relative;
-    transform: rotate(3deg); // Naklonenie podľa dizajnu
+    transform: rotate(3deg);
     transition: transform 0.5s ease;
-
-    &:hover {
-      transform: rotate(0deg);
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
+    &:hover { transform: rotate(0deg); }
+    img { width: 100%; height: auto; }
     @media screen and (max-width: $breakpoint-tablet) {
       margin: 0 auto;
       transform: rotate(-2deg);

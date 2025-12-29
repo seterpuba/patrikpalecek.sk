@@ -2,8 +2,49 @@
 @use '../mixins' as *;
 
 .contact {
-  padding: $global-vertical-padding_desktop 0 $space-xl 0;
-  background-color: $color-background-dark;
+  padding: $global-vertical-padding_desktop 0 0 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 800px;
+    height: 800px;
+    background-image: url('/images/background/background-contact.jpg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    pointer-events: none;
+    z-index: -1;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 600px;
+      height: 600px;
+      bottom: 0px;
+    }
+
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%; 
+    background: linear-gradient(to bottom, transparent, $color-background-dark);
+    pointer-events: none;
+    @media screen and (max-width: $breakpoint-tablet) {
+      z-index: 0;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding-bottom: $space-xl;
+  }
 
   @media screen and (max-width: $breakpoint-tablet) {
     padding: $global-vertical-padding_tablet 0 $space-lg 0;
@@ -53,6 +94,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    z-index: 2;
   }
 
   &__label {
@@ -67,7 +110,8 @@
   }
 
   &__title {
-    @extend %h1_bold;
+    @extend %h2_bold;
+    font-family: $font-heading;
     margin-bottom: $space-lg;
   }
 

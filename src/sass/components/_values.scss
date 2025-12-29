@@ -45,11 +45,12 @@
   &__card {
     scroll-snap-align: start;
     background-color: $color-secondary;
-    padding: $space-xl $space-lg;
+    padding: calc($space-xl - 10px) $space-lg $space-xl $space-lg;
 
     // Mobil: karta zaberá 90%, aby ďalšia trčala
     @media screen and (max-width: $breakpoint-mobile) {
       flex: 0 0 90%;
+      padding: $space-lg calc($space-md + 8px);
     }
 
     // Tablet: karta je užšia, aby bolo vidieť viac z ďalšej
@@ -65,7 +66,7 @@
 
   &__icon {
     color: $color-primary;
-    margin-bottom: $space-lg;
+    margin-bottom: $space-md;
     
     img{
       @include absoluteSquare(72px);
@@ -74,17 +75,23 @@
 
   &__name {
     @extend %h3_bold;
+    font-size: 40px;
     font-weight: 600;
     color: $color-light;
-    margin-bottom: $space-md;
+    margin-bottom: $space-lg;
     text-transform: uppercase;
   }
 
   &__text {
-    @extend %p_small_regular;
+    @extend %p_medium_regular;
+    font-size: 20px;
     color: $color-light;
     margin-bottom: $space-md;
     text-wrap: pretty;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-family: 18px;
+    }
 
     &:last-child {
       margin-bottom: 0;

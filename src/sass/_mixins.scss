@@ -40,19 +40,19 @@
 /*-----------------------------------------------------------*/
 
 %h1 {
-	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.3em);
+	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.1em);
 }
 
 %h1_bold {
-	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.3em);
+	@include font($fontSize: 132px, $fontWeight: normal, $lineHeight: 1.1em);
 }
 
 %h2 {
-	@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.3em);
+	@include font($fontSize: 32px, $fontWeight: normal, $lineHeight: 1.1em);
 }
 
 %h2_bold {
-	@include font($fontSize: 32px, $fontWeight: bold, $lineHeight: 1.3em);
+	@include font($fontSize: 32px, $fontWeight: 500, $lineHeight: 1.1em);
 }
 
 %h3 {
@@ -60,7 +60,7 @@
 }
 
 %h3_bold {
-	@include font($fontSize: 40px, $fontWeight: bold, $lineHeight: 1.3em);
+	@include font($fontSize: 40px, $fontWeight: 500, $lineHeight: 1.3em);
 }
 
 %h4 {
@@ -68,7 +68,7 @@
 }
 
 %h4_bold {
-	@include font($fontSize: 20px, $fontWeight: bold, $lineHeight: 1.3em);
+	@include font($fontSize: 20px, $fontWeight: 500, $lineHeight: 1.3em);
 }
 
 %h5 {
@@ -76,7 +76,7 @@
 }
 
 %h5_bold {
-	@include font($fontSize: 18px, $fontWeight: bold, $lineHeight: 1.3em);
+	@include font($fontSize: 18px, $fontWeight: 500, $lineHeight: 1.3em);
 }
 
 %h6 {
@@ -84,7 +84,7 @@
 }
 
 %h6_bold {
-	@include font($fontSize: 16px, $fontWeight: bold, $lineHeight: 1.3em);
+	@include font($fontSize: 16px, $fontWeight: 500, $lineHeight: 1.3em);
 }
 
 @media screen and (max-width: $breakpoint-mobile) {
@@ -94,7 +94,7 @@
 	}
 
 	%h1_bold {
-		@include font($fontSize: 56px, $fontWeight: bold, $lineHeight: 1.3em);
+		@include font($fontSize: 56px, $fontWeight: 500, $lineHeight: 1.3em);
 	}
 
 	%h2 {
@@ -102,7 +102,7 @@
 	}
 
 	%h2_bold {
-		@include font($fontSize: 32px, $fontWeight: bold, $lineHeight: 1.3em);
+		@include font($fontSize: 32px, $fontWeight: 500, $lineHeight: 1.3em);
 	}
 
 }

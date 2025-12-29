@@ -1,0 +1,19 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.tag-label {
+  @extend %p_medium_bold;
+  color: $color-light;
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  margin-bottom: $space-lg;
+
+  &::before {
+    content: '';
+    @include absoluteSquare(24px);
+    @include backgroundIcon('/images/icons/arrow-vector.svg');
+    display: block;
+  }
+
+}

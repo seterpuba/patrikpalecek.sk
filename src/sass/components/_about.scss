@@ -1,0 +1,141 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.about {
+  padding: $global-vertical-padding_desktop 0;
+  background: radial-gradient(circle at 80% 20%, rgba($color-primary, 0.15) 0%, transparent 50%),
+              $color-background-dark;
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: $global-vertical-padding_tablet 0;
+  }
+
+  &__hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-xl;
+    align-items: start;
+    margin-bottom: $space-xxl;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      gap: $space-lg;
+    }
+  }
+
+  &__image-main {
+
+    &--desktop {
+      display: block;
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: block;
+        margin-top: $space-xl;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      transform: rotate(-1.5deg);
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__title {
+    @extend %h1_bold;
+    margin-bottom: $space-lg;
+  }
+
+  &__description {
+    @extend %p_medium_regular;
+    color: rgba($color-light, 0.8);
+
+    p { margin-bottom: $space-md; }
+    strong { color: $color-light; font-weight: 700; }
+  }
+
+  &__intro-small {
+    margin-top: $space-xl;
+    margin-bottom: $space-lg !important;
+  }
+
+  &__list {
+    list-style: none;
+    margin-top: $space-md;
+
+    li {
+      position: relative;
+      margin-bottom: $space-sm;
+      display: flex;
+      align-items: flex-start;
+      gap: $space-md;
+      @extend %p_medium_regular;
+
+      &::before {
+        position: relative;
+        top: 10px;
+        content: '';
+        @include absoluteSquare(12px);
+        @include backgroundIcon('/images/icons/arrow-vector.svg');
+        display: block;
+      }
+    }
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: $space-xl;
+    align-items: center;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column-reverse; // Na mobile ide obrázok nad text v tejto sekcii
+      gap: $space-xl;
+    }
+  }
+
+  &__footer-text {
+    @extend %p_medium_regular;
+    color: rgba($color-light, 0.8);
+    p { margin-bottom: $space-md; }
+    strong { color: $color-light; }
+  }
+
+  &__image-tilt {
+    position: relative;
+    transform: rotate(3deg); // Naklonenie podľa dizajnu
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: rotate(0deg);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      margin: 0 auto;
+      transform: rotate(-2deg);
+    }
+  }
+}

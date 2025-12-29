@@ -1,0 +1,156 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contact {
+  padding: $global-vertical-padding_desktop 0 $space-xl 0;
+  background-color: $color-background-dark;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: $global-vertical-padding_tablet 0 $space-lg 0;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-xxl;
+    align-items: center;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column; // Text pôjde prvý, potom obrázok
+    }
+  }
+
+  &__image {
+
+    &--desktop {
+      display: block;
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: block;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      margin-top: $space-xl;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__label {
+    @extend %p_small_bold;
+    color: $color-light;
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+    margin-bottom: $space-md;
+
+    svg { @include absoluteSquare(12px); color: $color-primary; }
+  }
+
+  &__title {
+    @extend %h1_bold;
+    margin-bottom: $space-lg;
+  }
+
+  &__text {
+    @extend %p_medium_regular;
+    color: rgba($color-light, 0.8);
+    margin-bottom: $space-xl;
+    max-width: 500px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $space-md;
+    margin-bottom: $space-xxl;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      margin-bottom: $space-md;
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid rgba($color-light, 0.1);
+    padding-top: $space-lg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend %p_small_regular;
+    color: rgba($color-light, 0.5);
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-sm;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: $space-md;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: $space-xs;
+    }
+  }
+}
+
+// Pomocná trieda pre tlačidlá (ak ju ešte nemáš v globálnych štýloch)
+.btn--outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: calc($space-md + 6px) $space-xl;
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  text-decoration: none;
+  @extend %p_small_bold;
+  transition: all 0.3s ease;
+
+  img{
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-background-dark;
+    img{
+      filter: saturate(0%) invert(1);
+    }
+  }
+}
